@@ -1,0 +1,13 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+    background-color: cornsilk;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
