@@ -22,6 +22,13 @@ const useRowStyles = makeStyles({
     },
   },
 });
+const useRowStyles1 = makeStyles({
+  root: {
+    '& > *': {
+      borderBottom: 'unset',
+    },
+  },
+});
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -32,8 +39,18 @@ function createData(name, calories, fat, carbs, protein, price) {
     protein,
     price,
     history: [
-      { date: 'https://github.com/angular/angular/issues/36270', customerId: 'authantification', amount: 3 },
-      { date: 'https://github.com/angular/angular/issues/36270', customerId: 'repense', amount: 1 },
+      { date: 'https://github.com/angular/angular/issues/36270', customerId: 'authantification', amount: 3,
+      information:[
+        {id: 1,prenom:'ahmed',nom:'ahmadi' }
+
+      ] 
+    },
+      { date: 'https://github.com/angular/angular/issues/36270', customerId: 'repense', amount: 1,
+      information:[
+        {id: 1,prenom:'ahmed',nom:'ahmadi' }
+
+      ] 
+     },
     ],
   };
 }
@@ -84,8 +101,10 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
+                  
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.date}>
+                      
                       <TableCell >{historyRow.amount}</TableCell>
                       <TableCell component="th" scope="row">
                         {historyRow.date}

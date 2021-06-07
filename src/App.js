@@ -14,6 +14,11 @@ import Home from "./component/Home";
 import Application from "./component/Application";
 import Test from "./component/Test";
 import Rapport from "./component/Raport";
+import DateTime from "./component/DateTimePeacker";
+import AdminPage from "./component/AdminPage";
+
+
+
 
 
 
@@ -28,6 +33,12 @@ function App() {
           <li className="nav-item">
             <Link to={"/home"} className="nav-link">
               Home
+            </Link>
+            
+          </li>
+          <li className="nav-item">
+            <Link to={"/admin"} className="nav-link">
+              Admin
             </Link>
             
           </li>
@@ -74,6 +85,8 @@ function App() {
           <Route exact path="/rapport" component={Rapport} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/dateTime" component={DateTime} />
+          <Route exact path="/admin" component={AdminPage} />
           
         </Switch>
       </div>

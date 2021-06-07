@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -22,10 +22,21 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import './style.css'
+import DateTime from "./DateTimePeacker";
+import DateTimePicker from 'react-datetime-picker';
+//import "react-datepicker/dist/react-datepicker.css";
+import styled from "styled-components";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+//import { DateTimePicker, DateConvention, TimeConvention } from '@pnp/spfx-controls-react/lib/DateTimePicker';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
+
 
 const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
@@ -128,6 +139,8 @@ const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
 
+  const [value, onChange] = useState(new Date());
+
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -151,11 +164,13 @@ const EnhancedTableToolbar = (props) => {
           
           <div class="flex-container">
 
-  <div class="flex-child magenta">
-  <IconButton aria-label="Schedule" title="Schedule a test">
-            <ScheduleIcon style={{ color: '#00D000' }} />
-            
-          </IconButton>
+  <div class="flex-child green">
+    
+ <DateTimePicker label="DateTime Picker - 24h"
+                
+        onChange={onChange}
+        value={value}
+      />
   </div>
   
   <div class="flex-child green">
@@ -171,11 +186,14 @@ const EnhancedTableToolbar = (props) => {
        
         
       ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="filter list">
-            <FilterListIcon />
+        <div class="flex-container">
+         <div class="flex-child green">
+  <IconButton aria-label="play" >
+            <PlayCircleFilledIcon color="primary"/>
+
           </IconButton>
-        </Tooltip>
+  </div>
+        </div>
       )}
     </Toolbar>
   );
@@ -211,6 +229,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EnhancedTable() {
   const classes = useStyles();
+  
  
   
   const [selected, setSelected] = React.useState([]);
