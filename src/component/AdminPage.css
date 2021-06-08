@@ -2,7 +2,9 @@
 
 
 
-
+#title {
+  text-align: center;
+}
 
 #employee {
   border-collapse: collapse;

@@ -36,7 +36,7 @@ const Table = () => {
     const renderBody = () => {
         return employees && employees.map(({ id, name, email, phone }) => {
             return (
-                <tr key={id}>
+                <tr key={id}  >
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{email}</td>
@@ -58,7 +58,7 @@ const Table = () => {
                 <thead>
                     <tr>{renderHeader()}</tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {renderBody()}
                 </tbody>
             </table>
